@@ -93,7 +93,11 @@ public class BookAdapter extends ArrayAdapter<Book> {
         // set this text on the number TextView
 
 
-        pageCountTextView.setText(String.valueOf(currentbook.getPageCount()));
+
+        DecimalFormat formatter = new DecimalFormat("0");
+        String count = formatter.format(currentbook.getPageCount());
+
+        pageCountTextView.setText(count);
 
 
 // Set the proper background color on the magnitude circle.
