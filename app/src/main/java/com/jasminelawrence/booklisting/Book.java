@@ -17,6 +17,14 @@ public class Book {
         mPageCount=pageCount;
     }
 
+    public Book(String title, String author, String published, double pageCount){
+        mTitle = title;
+        mAuthor = author;
+        mPublished =published;
+        mPrice = String.valueOf(R.string.no_price);
+        mPageCount=pageCount;
+    }
+
     public String getTitle() {
         return mTitle;
     }
