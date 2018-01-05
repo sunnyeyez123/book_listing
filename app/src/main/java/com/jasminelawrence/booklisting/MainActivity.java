@@ -2,19 +2,15 @@ package com.jasminelawrence.booklisting;
 
 import android.app.LoaderManager;
 import android.content.Context;
-import android.content.Intent;
 
-import android.app.LoaderManager;
 import android.app.LoaderManager.LoaderCallbacks;
 
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -94,8 +90,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public Loader<List<Book>> onCreateLoader(int i, Bundle bundle) {
-        return null;
-    }
+        // Create a new loader for the given URL
+        return new BookLoader(this, finalQuery);    }
 
     @Override
     public void onLoadFinished(Loader<List<Book>> loader, List<Book> bookList) {

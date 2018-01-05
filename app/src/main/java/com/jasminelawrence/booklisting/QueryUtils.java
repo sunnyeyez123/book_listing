@@ -41,7 +41,7 @@ public final class QueryUtils {
     /**
      * Query the USGS dataset and return a list of {@link Book} objects.
      */
-    public static List<Book> fetchbookData(String requestUrl) {
+    public static List<Book> fetchBookData(String requestUrl) {
 
         // Create URL object
         URL url = createUrl(requestUrl);
