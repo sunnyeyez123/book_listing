@@ -212,6 +212,20 @@ public final class QueryUtils {
 
                 }
 
+                JSONObject accessInfo = currentbook.getJSONObject("accessInfo");
+
+                String hasEBook = accessInfo.getString("epub");
+
+                if(hasEBook.equals("true") ){
+
+                        // Extract the value for the key called "url"
+                         url = accessInfo.getString("webReaderLink");
+                        // Create a new {@link book} object with the magnitude, location, time,
+                        // and url from the JSON response.
+                        book = new Book( title,  author,  published, pageCount, url);
+
+                }
+
                 // Add the new {@link book} to the list of books.
                 books.add(book);
             }
