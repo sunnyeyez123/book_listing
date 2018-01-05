@@ -134,7 +134,7 @@ public class BookListActivity extends AppCompatActivity implements LoaderCallbac
 
         } else {
             // Set empty state text to display "No books found."
-            results.setText("I'm here with no books");
+            results.setText(getString(R.string.no_books));
         }
 
 

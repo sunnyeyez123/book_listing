@@ -143,7 +143,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
             magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude5);
 
         }
-        
+
         return magnitude1Color;
     }
 }

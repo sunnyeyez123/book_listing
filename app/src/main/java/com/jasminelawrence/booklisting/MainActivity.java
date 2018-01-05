@@ -54,9 +54,8 @@ public class MainActivity extends AppCompatActivity  {
 
         if(searchBoxTextView.getText().length() >0){
 
-            finalQuery= queryPart1+ searchBoxTextView.getText()+queryPart2;
-            results.setText(finalQuery);
-
+            String entered  = searchBoxTextView.getText().toString().replaceAll(" ","");
+            finalQuery= queryPart1+ entered +queryPart2;
 
         }else{
             finalQuery = getString(R.string.enter_something);

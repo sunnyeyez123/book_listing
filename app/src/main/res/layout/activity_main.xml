@@ -15,7 +15,8 @@
        />
 
     <LinearLayout
-        android:id="@+id/search"
+        android:gravity="center"
+
         android:layout_below="@id/description"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
