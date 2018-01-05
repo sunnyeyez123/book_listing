@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity  {
     String queryPart1 = "https://www.googleapis.com/books/v1/volumes?q=";
     String queryPart2="&maxResults=10";
     String finalQuery;
+    String booklist;
 
     private static final String LOG_TAG = MainActivity.class.getName();
 
@@ -52,6 +53,7 @@ public class MainActivity extends AppCompatActivity  {
 
 
         if(searchBoxTextView.getText().length() >0){
+
             finalQuery= queryPart1+ searchBoxTextView.getText()+queryPart2;
             results.setText(finalQuery);
 

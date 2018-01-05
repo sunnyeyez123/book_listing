@@ -1,15 +1,18 @@
 package com.jasminelawrence.booklisting;
 
+
 /**
  * Created by Jasmine on 1/4/18.
  */
 
-public class Book {
+public class Book  {
 
     private String mTitle, mAuthor, mPublished, mPrice,mUrl;
     private double mPageCount;
 
-    public Book(String title, String author, String published, String price, double pageCount, String url){
+
+
+    public Book(String title,String author, String published, String price, double pageCount, String url){
         mTitle = title;
         mAuthor = author;
         mPublished =published;
@@ -22,7 +25,8 @@ public class Book {
         mTitle = title;
         mAuthor = author;
         mPublished =published;
-        mPrice = String.valueOf(R.string.no_price);
+
+        mPrice = "Not for Sale";
         mPageCount=pageCount;
         mUrl=url;
     }

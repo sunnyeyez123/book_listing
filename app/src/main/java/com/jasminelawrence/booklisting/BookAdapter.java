@@ -85,7 +85,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
         // set this text on the number TextView
 
 
-        priceTextView.setText(currentbook.getPrice());
+        priceTextView.setText("$"+currentbook.getPrice());
 
         // Find the TextView in the list_item.xml layout with the ID version_number
         TextView pageCountTextView = (TextView) listItemView.findViewById(R.id.pageCount);
@@ -97,7 +97,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
         DecimalFormat formatter = new DecimalFormat("0");
         String count = formatter.format(currentbook.getPageCount());
 
-        pageCountTextView.setText(count);
+        pageCountTextView.setText(count + " pages");
 
 
 // Set the proper background color on the magnitude circle.

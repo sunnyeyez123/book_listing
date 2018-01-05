@@ -1,34 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="16dp"
-    >
-
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
 
 
     <LinearLayout
         android:id="@+id/names"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="16dp"
 
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/title"
-            tools:text="title"
-            android:textStyle="bold"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            android:textStyle="bold"
+            tools:text="title" />
 
         <TextView
             android:id="@+id/author"
-            tools:text="author"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+            tools:text="author" />
     </LinearLayout>
 
 
@@ -39,64 +40,71 @@
 
         <LinearLayout
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/published"/>
+                android:text="@string/published"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textStyle="italic" />
 
             <TextView
                 android:id="@+id/published"
-                tools:text="title"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
 
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                tools:text="Jane Smith" />
 
 
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:orientation="vertical"
-            android:layout_height="wrap_content">
+            android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/price"/>
+                android:text="@string/price"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                android:textStyle="italic" />
+
             <TextView
                 android:id="@+id/price"
-                tools:text="title"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+
+                android:layout_height="wrap_content"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Small"
+                tools:text="39.99" />
 
 
         </LinearLayout>
 
-        <TextView
-            android:id="@+id/pageCount"
 
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:textColor="@android:color/white"
-            android:layout_gravity="center_vertical"
-            android:gravity="center"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif-medium"
-            android:background="@drawable/pagecount_circle"
-            android:layout_alignParentRight="true"
-            tools:text="234"
-            />
+
+            <TextView
+                android:id="@+id/pageCount"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/pagecount_circle"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="16sp"
+                tools:text="1234 pages" />
+
+
 
 
     </LinearLayout>
-
-
-
 
 
 </LinearLayout>
