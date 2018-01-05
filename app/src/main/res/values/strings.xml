@@ -5,5 +5,13 @@
     <string name="search_hint">Enter a topic</string>
     <string name="instructions">Enter a topic to find related books</string>
 
+    <string name="enter_something">The query can\'t be blank. Please enter a topic.</string>
+
+    <!-- Text to display in the list when there are no books [CHAR LIMIT=NONE] -->
+    <string name="no_books">No books found.</string>
+    <!-- Text to display in the list when there is no internet connectivity [CHAR LIMIT=NONE] -->
+
+    <string name="no_internet">No internet connection.</string>
+
 
 </resources>
