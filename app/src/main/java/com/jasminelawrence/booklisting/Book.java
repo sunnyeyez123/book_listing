@@ -6,23 +6,25 @@ package com.jasminelawrence.booklisting;
 
 public class Book {
 
-    private String mTitle, mAuthor, mPublished, mPrice;
+    private String mTitle, mAuthor, mPublished, mPrice,mUrl;
     private double mPageCount;
 
-    public Book(String title, String author, String published, String price, double pageCount){
+    public Book(String title, String author, String published, String price, double pageCount, String url){
         mTitle = title;
         mAuthor = author;
         mPublished =published;
         mPrice = price;
         mPageCount=pageCount;
+        mUrl=url;
     }
 
-    public Book(String title, String author, String published, double pageCount){
+    public Book(String title, String author, String published, double pageCount, String url){
         mTitle = title;
         mAuthor = author;
         mPublished =published;
         mPrice = String.valueOf(R.string.no_price);
         mPageCount=pageCount;
+        mUrl=url;
     }
 
     public String getTitle() {
@@ -43,6 +45,10 @@ public class Book {
 
     public double getPageCount() {
         return mPageCount;
+    }
+
+    public String getUrl() {
+        return mUrl;
     }
 
     @Override

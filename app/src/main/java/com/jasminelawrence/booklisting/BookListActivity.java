@@ -2,19 +2,23 @@ package com.jasminelawrence.booklisting;
 
 import android.app.LoaderManager;
 import android.content.Context;
+import android.content.Intent;
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
 import android.app.LoaderManager.LoaderCallbacks;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BookListActivity extends AppCompatActivity implements LoaderCallbacks<List<Book>> {
@@ -24,40 +28,60 @@ public class BookListActivity extends AppCompatActivity implements LoaderCallbac
      * This really only comes into play if you're using multiple loaders.
      */
     private static final int BOOK_LOADER_ID = 1;
-    TextView searchBoxTextView, results;
-    Button submitButton;
-    String queryPart1 = "https://www.googleapis.com/books/v1/volumes?q=";
-    String queryPart2 = "&maxResults=10";
-    String finalQuery;
+
     ProgressBar loadingIndicator;
+    private BookAdapter mAdapter;
+
+    TextView results;
+
+    static final String LINK_TAG="link tag";
+    String query;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.book_list);
 
+        results = (TextView) findViewById(R.id.empty_view);
 
-        searchBoxTextView = (TextView) findViewById(R.id.search_box);
-        submitButton = (Button) findViewById(R.id.submit_button);
+        // Find a reference to the {@link ListView} in the layout
+        ListView earthquakeListView = (ListView) findViewById(R.id.list);
 
-        results = (TextView) findViewById(R.id.error_text);
+        earthquakeListView.setEmptyView(results);
 
-        submitButton.setOnClickListener(new View.OnClickListener() {
+        query=getIntent().getStringExtra(LINK_TAG);
+
+
+
+
+        // Create a new adapter that takes an empty list of earthquakes as input
+        mAdapter = new BookAdapter(this, new ArrayList<Book>());
+
+        // Set the adapter on the {@link ListView}
+        // so the list can be populated in the user interface
+        earthquakeListView.setAdapter(mAdapter);
+
+        // Set an item click listener on the ListView, which sends an intent to a web browser
+        // to open a website with more information about the selected earthquake.
+        earthquakeListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                // Find the current earthquake that was clicked on
+                Book currentEarthquake = mAdapter.getItem(position);
 
-                if (searchBoxTextView.getText().length() > 0) {
-                    finalQuery = queryPart1 + searchBoxTextView.getText() + queryPart2;
-                    results.setText(finalQuery);
+                // Convert the String URL into a URI object (to pass into the Intent constructor)
+                Uri earthquakeUri = Uri.parse(currentEarthquake.getUrl());
 
+                // Create a new intent to view the earthquake URI
+                Intent websiteIntent = new Intent(Intent.ACTION_VIEW, earthquakeUri);
 
-                } else {
-                    finalQuery = getString(R.string.enter_something);
-                    results.setText(finalQuery);
-
-                }
+                // Send the intent to launch a new activity
+                startActivity(websiteIntent);
             }
         });
+
+
 
 
 // Get a reference to the ConnectivityManager to check state of network connectivity
@@ -91,7 +115,7 @@ public class BookListActivity extends AppCompatActivity implements LoaderCallbac
     @Override
     public Loader<List<Book>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new BookLoader(this, finalQuery);
+        return new BookLoader(this, query);
     }
 
     @Override
@@ -101,17 +125,16 @@ public class BookListActivity extends AppCompatActivity implements LoaderCallbac
 
 
         // Clear the adapter of previous book data
-//        mAdapter.clear();
+       mAdapter.clear();
 
         // If there is a valid list of {@link Book}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (bookList != null && !bookList.isEmpty()) {
-            // mAdapter.addAll(books);
-            results.setText("Got some " + searchBoxTextView.getText() + "books!");
+             mAdapter.addAll(bookList);
 
         } else {
             // Set empty state text to display "No books found."
-            results.setText("I'm here");
+            results.setText("I'm here with no books");
         }
 
 
@@ -121,7 +144,7 @@ public class BookListActivity extends AppCompatActivity implements LoaderCallbac
     public void onLoaderReset(Loader<List<Book>> loader) {
 
         // Loader reset, so we can clear out our existing data.
-        //  mAdapter.clear();
+          mAdapter.clear();
 
     }
 }
