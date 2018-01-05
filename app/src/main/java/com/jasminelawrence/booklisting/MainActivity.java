@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity  {
     TextView searchBoxTextView,results ;
     Button submitButton;
     String queryPart1 = "https://www.googleapis.com/books/v1/volumes?q=";
-    String queryPart2="&maxResults=10";
+    String queryPart2="&maxResults=20";
     String finalQuery;
     String booklist;
 
