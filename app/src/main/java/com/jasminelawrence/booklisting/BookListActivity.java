@@ -2,9 +2,6 @@ package com.jasminelawrence.booklisting;
 
 import android.app.LoaderManager;
 import android.content.Context;
-
-import android.app.LoaderManager.LoaderCallbacks;
-
 import android.content.Loader;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -15,27 +12,29 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+
+import android.app.LoaderManager.LoaderCallbacks;
+
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements LoaderCallbacks<List<Book>> {
-
-    TextView searchBoxTextView,results ;
-    Button submitButton;
-    String queryPart1 = "https://www.googleapis.com/books/v1/volumes?q=";
-    String queryPart2="&maxResults=10";
-    String finalQuery;
-    ProgressBar loadingIndicator;
+public class BookListActivity extends AppCompatActivity implements LoaderCallbacks<List<Book>> {
 
     /**
      * Constant value for the book loader ID. We can choose any integer.
      * This really only comes into play if you're using multiple loaders.
      */
     private static final int BOOK_LOADER_ID = 1;
+    TextView searchBoxTextView, results;
+    Button submitButton;
+    String queryPart1 = "https://www.googleapis.com/books/v1/volumes?q=";
+    String queryPart2 = "&maxResults=10";
+    String finalQuery;
+    ProgressBar loadingIndicator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.book_list);
 
 
         searchBoxTextView = (TextView) findViewById(R.id.search_box);
@@ -47,19 +46,18 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
             @Override
             public void onClick(View view) {
 
-                if(searchBoxTextView.getText().length() >0){
-                    finalQuery= queryPart1+ searchBoxTextView.getText()+queryPart2;
+                if (searchBoxTextView.getText().length() > 0) {
+                    finalQuery = queryPart1 + searchBoxTextView.getText() + queryPart2;
                     results.setText(finalQuery);
 
 
-                }else{
+                } else {
                     finalQuery = getString(R.string.enter_something);
                     results.setText(finalQuery);
 
                 }
             }
         });
-
 
 
 // Get a reference to the ConnectivityManager to check state of network connectivity
@@ -93,7 +91,8 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     @Override
     public Loader<List<Book>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new BookLoader(this, finalQuery);    }
+        return new BookLoader(this, finalQuery);
+    }
 
     @Override
     public void onLoadFinished(Loader<List<Book>> loader, List<Book> bookList) {
@@ -104,13 +103,13 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         // Clear the adapter of previous book data
 //        mAdapter.clear();
 
-        // If there is a valid list of {@link book}s, then add them to the adapter's
+        // If there is a valid list of {@link Book}s, then add them to the adapter's
         // data set. This will trigger the ListView to update.
         if (bookList != null && !bookList.isEmpty()) {
-           // mAdapter.addAll(books);
-            results.setText("Got some "+ searchBoxTextView.getText()+ "books!");
+            // mAdapter.addAll(books);
+            results.setText("Got some " + searchBoxTextView.getText() + "books!");
 
-        }else{
+        } else {
             // Set empty state text to display "No books found."
             results.setText("I'm here");
         }
@@ -122,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     public void onLoaderReset(Loader<List<Book>> loader) {
 
         // Loader reset, so we can clear out our existing data.
-      //  mAdapter.clear();
+        //  mAdapter.clear();
 
     }
 }

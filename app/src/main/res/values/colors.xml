@@ -3,4 +3,20 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+    <!-- Color for an book with magnitude 0 and 2 -->
+    <color name="magnitude1">#4A7BA7</color>
+
+    <!-- Magnitude circle color for an book with magnitude between 2 and 3 -->
+    <color name="magnitude2">#04B4B3</color>
+
+    <!-- Magnitude circle color for an book with magnitude between 3 and 4 -->
+    <color name="magnitude3">#10CAC9</color>
+
+    <!-- Magnitude circle color for an book with magnitude between 4 and 5 -->
+    <color name="magnitude4">#F5A623</color>
+
+    <!-- Magnitude circle color for an book with magnitude between 5 and 6 -->
+    <color name="magnitude5">#FF7D50</color>
+
 </resources>
