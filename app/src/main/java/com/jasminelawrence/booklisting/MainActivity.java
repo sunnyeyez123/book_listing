@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     String queryPart1 = "https://www.googleapis.com/books/v1/volumes?q=";
     String queryPart2="&maxResults=10";
     String finalQuery;
+    String testQ = "https://www.googleapis.com/books/v1/volumes?q=robot&maxResults=4";
     ProgressBar loadingIndicator;
 
     /**
@@ -93,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     @Override
     public Loader<List<Book>> onCreateLoader(int i, Bundle bundle) {
         // Create a new loader for the given URL
-        return new BookLoader(this, finalQuery);    }
+        return new BookLoader(this, testQ);    }
 
     @Override
     public void onLoadFinished(Loader<List<Book>> loader, List<Book> bookList) {
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
         }else{
             // Set empty state text to display "No earthquakes found."
-            results.setText(R.string.no_books);
+            results.setText("I'm here");
         }
 
 

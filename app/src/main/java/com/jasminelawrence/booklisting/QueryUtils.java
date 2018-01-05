@@ -189,21 +189,25 @@ public final class QueryUtils {
                 // Extract the value for the key called "time"
                 double pageCount = volumeInfo.getLong("pageCount");
 
-                JSONObject saleInfo = currentbook.getJSONObject("saleInfo");
 
                 // Create a new {@link book} object with the magnitude, location, time,
                 // and url from the JSON response.
                 Book book = new Book( title,  author,  published,  pageCount);
 
-                if(saleInfo != null){
+                JSONObject saleInfo = currentbook.getJSONObject("saleInfo");
+
+                String forSale = saleInfo.getString("saleability");
+
+                if(forSale.equals("FOR_SALE") ){
                     JSONObject listPrice = saleInfo.getJSONObject("listPrice");
+                    if(listPrice != null){
+                        // Extract the value for the key called "url"
+                        String price = listPrice.getString("amount");
+                        // Create a new {@link book} object with the magnitude, location, time,
+                        // and url from the JSON response.
+                        book = new Book( title,  author,  published,  price,  pageCount);
+                    }
 
-                    // Extract the value for the key called "url"
-                    String price = listPrice.getString("amount");
-
-                    // Create a new {@link book} object with the magnitude, location, time,
-                    // and url from the JSON response.
-                     book = new Book( title,  author,  published,  price,  pageCount);
                 }
 
                 // Add the new {@link book} to the list of books.
