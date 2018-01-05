@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Book Listing</string>
+    <string name="search_button">Search</string>
+
+    <string name="search_hint">Enter a topic</string>
+    <string name="instructions">Enter a topic to find related books</string>
+
+
 </resources>
