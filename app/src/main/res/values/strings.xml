@@ -14,5 +14,8 @@
     <string name="no_internet">No internet connection.</string>
     <string name="no_price">Not for Sale</string>
 
+    <string name="published">Published</string>
+    
+    <string name="price">Price</string>
 
 </resources>
