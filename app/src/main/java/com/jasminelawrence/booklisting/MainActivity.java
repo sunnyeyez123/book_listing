@@ -12,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
     String queryPart1 = "https://www.googleapis.com/books/v1/volumes?q=";
     String queryPart2="&maxResults=10";
     String finalQuery;
+    ProgressBar loadingIndicator;
 
     /**
      * Constant value for the book loader ID. We can choose any integer.
@@ -79,7 +81,7 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
         } else {
             // Otherwise, display error
             // First, hide loading indicator so error message will be visible
-            View loadingIndicator = findViewById(R.id.loading_spinner);
+            loadingIndicator = (ProgressBar) findViewById(R.id.loading_spinner);
             loadingIndicator.setVisibility(View.GONE);
 
             // Update empty state with no connection error message
@@ -95,11 +97,32 @@ public class MainActivity extends AppCompatActivity implements LoaderCallbacks<L
 
     @Override
     public void onLoadFinished(Loader<List<Book>> loader, List<Book> bookList) {
+        loadingIndicator = (ProgressBar) findViewById(R.id.loading_spinner);
+        loadingIndicator.setVisibility(View.GONE);
+
+
+        // Clear the adapter of previous earthquake data
+//        mAdapter.clear();
+
+        // If there is a valid list of {@link Earthquake}s, then add them to the adapter's
+        // data set. This will trigger the ListView to update.
+        if (bookList != null && !bookList.isEmpty()) {
+           // mAdapter.addAll(earthquakes);
+            results.setText("Got some earthquakes!");
+
+        }else{
+            // Set empty state text to display "No earthquakes found."
+            results.setText(R.string.no_books);
+        }
+
 
     }
 
     @Override
     public void onLoaderReset(Loader<List<Book>> loader) {
+
+        // Loader reset, so we can clear out our existing data.
+      //  mAdapter.clear();
 
     }
 }
