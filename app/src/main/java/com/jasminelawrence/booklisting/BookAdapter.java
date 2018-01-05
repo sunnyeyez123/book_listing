@@ -85,7 +85,7 @@ public class BookAdapter extends ArrayAdapter<Book> {
         // set this text on the number TextView
 
 
-        priceTextView.setText("$"+currentbook.getPrice());
+        priceTextView.setText(currentbook.getPrice());
 
         // Find the TextView in the list_item.xml layout with the ID version_number
         TextView pageCountTextView = (TextView) listItemView.findViewById(R.id.pageCount);
@@ -119,30 +119,31 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
     private int getPageCountColor(double pageCount){
 
+        int count = (int) pageCount;
         int magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude1);
 
-        switch ((int) pageCount){
-            case 1:
-                magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude1);
-                break;
-            case 2:
-                magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude2);
-                break;
-            case 3:
-                magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude3);
-                break;
-            case 4:
-                magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude4);
-                break;
-            case 5:
-                magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude5);
-                break;
 
-            default:
-                magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude1);
-                break;
+        if(count <100){
+            magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude1);
+
+        }else if(count < 200){
+
+            magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude2);
+
+        }else if(count < 300){
+
+            magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude3);
+
+        }else if(count < 400){
+
+            magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude4);
+
+        }else if(count < 500){
+
+            magnitude1Color = ContextCompat.getColor(getContext(), R.color.magnitude5);
+
         }
-
+        
         return magnitude1Color;
     }
 }

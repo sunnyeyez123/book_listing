@@ -207,7 +207,7 @@ public final class QueryUtils {
                         String price = listPrice.getString("amount");
                         // Create a new {@link book} object with the magnitude, location, time,
                         // and url from the JSON response.
-                        book = new Book( title,  author,  published,  price,  pageCount, url);
+                        book = new Book( title,  author,  published,  "$"+price,  pageCount, url);
                     }
 
                 }
