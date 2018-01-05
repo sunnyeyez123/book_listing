@@ -21,6 +21,15 @@
         android:layout_centerInParent="true"
         android:textAppearance="?android:textAppearanceMedium" />
 
+    <Button
+        android:id="@+id/search_again"
+        android:layout_below="@id/empty_view"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+
+        android:layout_height="wrap_content"
+        android:text="New Search"/>
+
 
     <ProgressBar
         android:id="@+id/loading_spinner"

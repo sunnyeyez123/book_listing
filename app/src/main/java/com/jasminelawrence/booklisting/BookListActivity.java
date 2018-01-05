@@ -9,8 +9,10 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -36,6 +38,7 @@ public class BookListActivity extends AppCompatActivity implements LoaderCallbac
 
     static final String LINK_TAG="link tag";
     String query;
+    Button searchAgain;
 
 
     @Override
@@ -44,6 +47,10 @@ public class BookListActivity extends AppCompatActivity implements LoaderCallbac
         setContentView(R.layout.book_list);
 
         results = (TextView) findViewById(R.id.empty_view);
+        searchAgain = (Button) findViewById(R.id.search_again);
+        searchAgain.setVisibility(View.GONE);
+
+
 
         // Find a reference to the {@link ListView} in the layout
         ListView earthquakeListView = (ListView) findViewById(R.id.list);
@@ -110,6 +117,20 @@ public class BookListActivity extends AppCompatActivity implements LoaderCallbac
             results.setText(R.string.no_internet);
         }
 
+
+
+        searchAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                startMainActivity();
+
+
+            }
+        });
+
+
     }
 
     @Override
@@ -135,6 +156,8 @@ public class BookListActivity extends AppCompatActivity implements LoaderCallbac
         } else {
             // Set empty state text to display "No books found."
             results.setText(getString(R.string.no_books));
+            searchAgain.setVisibility(View.VISIBLE);
+
         }
 
 
@@ -145,6 +168,13 @@ public class BookListActivity extends AppCompatActivity implements LoaderCallbac
 
         // Loader reset, so we can clear out our existing data.
           mAdapter.clear();
+
+    }
+
+    private void startMainActivity() {
+        Intent intent = new Intent(this, MainActivity.class);
+        Log.i("BookListActivity", "Searching again");
+        startActivity(intent);
 
     }
 }
