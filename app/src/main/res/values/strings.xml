@@ -4,6 +4,8 @@
 
     <string name="search_hint">Enter a topic</string>
     <string name="instructions">Enter a topic to find related books</string>
+    <string name="by_Google">Powered by Google Books API</string>
+
 
     <string name="enter_something">The query can\'t be blank. Please enter a topic.</string>
 
