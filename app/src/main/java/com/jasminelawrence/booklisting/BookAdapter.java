@@ -74,8 +74,8 @@ public class BookAdapter extends ArrayAdapter<Book> {
         TextView publishedTextView = (TextView) listItemView.findViewById(R.id.published);
         // Get the version name from the current AndroidFlavor object and
         // set this text on the name TextView
-        publishedTextView.setText(currentbook.getPublished());
 
+        publishedTextView.setText(currentbook.getPublished());
 
 
 
@@ -115,22 +115,6 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
     }
 
-
-    /**
-     * Return the formatted date string (i.e. "Mar 3, 1984") from a Date object.
-     */
-    private String formatDate(Date dateObject) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("LLL dd, yyyy");
-        return dateFormat.format(dateObject);
-    }
-
-    /**
-     * Return the formatted date string (i.e. "4:30 PM") from a Date object.
-     */
-    private String formatTime(Date dateObject) {
-        SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
-        return timeFormat.format(dateObject);
-    }
 
 
     private int getPageCountColor(double pageCount){
